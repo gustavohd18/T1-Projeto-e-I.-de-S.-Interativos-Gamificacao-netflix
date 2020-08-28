@@ -1,7 +1,11 @@
 import 'package:IHC_netflix/models/episode.dart';
 import 'package:IHC_netflix/models/series.dart';
+import 'package:IHC_netflix/store/counter.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+
+final counter = Counter();
 
 class TvShow extends StatefulWidget {
   final int match;
@@ -326,18 +330,22 @@ class TvShowState extends State<TvShow> {
                               ),
                             ),
                             Padding(
-                                padding: EdgeInsets.only(top: 8.0),
-                                child: LinearPercentIndicator(
-                                  percent: 0.2,
+                              padding: EdgeInsets.only(top: 8.0),
+                              child: Observer(
+                                builder: (_) => LinearPercentIndicator(
+                                  percent: counter.percent,
                                   lineHeight: 15.0,
-                                  center: Text("20%"),
+                                  center: Text("${counter.percentText}%"),
                                   progressColor: Colors.green,
-                                )),
+                                ),
+                              ),
+                            ),
                             Padding(
                               padding: EdgeInsets.only(top: 8.0),
                               child: Container(
-                                child: Text(
-                                  'Pontos 4',
+                                  child: Observer(
+                                builder: (_) => Text(
+                                  'Pontos: ${counter.points}',
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 3,
                                   textAlign: TextAlign.left,
@@ -347,7 +355,7 @@ class TvShowState extends State<TvShow> {
                                     fontSize: 15.0,
                                   ),
                                 ),
-                              ),
+                              )),
                             ),
                             Padding(
                               padding: EdgeInsets.only(top: 8.0),
