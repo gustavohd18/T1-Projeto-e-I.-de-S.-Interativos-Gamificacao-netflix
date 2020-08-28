@@ -1,14 +1,11 @@
-import 'package:IHC_netflix/main.dart';
 import 'package:IHC_netflix/models/episode.dart';
 import 'package:IHC_netflix/models/series.dart';
 import 'package:IHC_netflix/pages/list_episodio.dart';
 import 'package:IHC_netflix/store/counter.dart';
-import 'package:IHC_netflix/widgets/content_list.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-
-final counter = Counter();
+import 'package:flutter_modular/flutter_modular.dart';
 
 class TvShow extends StatefulWidget {
   final int match;
@@ -24,7 +21,7 @@ class TvShow extends StatefulWidget {
   TvShowState createState() => TvShowState();
 }
 
-class TvShowState extends State<TvShow> {
+class TvShowState extends ModularState<TvShow, Counter> {
   var currentSeason = 1;
   @override
   void initState() {
@@ -342,9 +339,10 @@ class TvShowState extends State<TvShow> {
                               padding: EdgeInsets.only(top: 8.0),
                               child: Observer(
                                 builder: (_) => LinearPercentIndicator(
-                                  percent: counter.percent,
+                                  percent: this.controller.percent,
                                   lineHeight: 15.0,
-                                  center: Text("${counter.percentText}%"),
+                                  center:
+                                      Text("${this.controller.percentText}%"),
                                   progressColor: Colors.green,
                                 ),
                               ),
@@ -354,7 +352,7 @@ class TvShowState extends State<TvShow> {
                               child: Container(
                                   child: Observer(
                                 builder: (_) => Text(
-                                  'Pontos: ${counter.points}',
+                                  'Pontos: ${this.controller.points}',
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 3,
                                   textAlign: TextAlign.left,

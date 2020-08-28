@@ -15,16 +15,22 @@ abstract class _Counter with Store {
 
   @action
   incrementPoints() {
+    print("multipliquei pontos");
+    print(points);
     points++;
   }
 
   @action
   incrementPercent() {
+    print("multipliquei porcentagem");
+    print(percent);
     percent = percent + 0.25;
   }
 
   @action
   incrementpercentText() {
+    print("multipliquei porcentagem texto");
+    print(percentText);
     percentText = percentText + 25;
   }
 }

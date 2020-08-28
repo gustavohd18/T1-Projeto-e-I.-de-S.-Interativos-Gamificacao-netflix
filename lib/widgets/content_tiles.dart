@@ -1,4 +1,5 @@
 import 'package:IHC_netflix/models/episode.dart';
+import 'package:IHC_netflix/pages/quiz.dart';
 import 'package:flutter/material.dart';
 
 class ContentTile extends StatelessWidget {
@@ -20,6 +21,10 @@ class ContentTile extends StatelessWidget {
       title: Text(episodio.name),
       trailing: Icon(Icons.keyboard_arrow_right),
       onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Quiz()),
+        );
         // Modular.to.pushNamed('/countries', arguments: country);
       },
     );

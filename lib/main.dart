@@ -1,10 +1,12 @@
+import 'package:IHC_netflix/app/app_module.dart';
 import 'package:IHC_netflix/models/episode.dart';
 import 'package:IHC_netflix/models/series.dart';
 import 'package:IHC_netflix/pages/tv_show.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ModularApp(module: AppModule()));
 }
 
 final episodio1 = Episode(
