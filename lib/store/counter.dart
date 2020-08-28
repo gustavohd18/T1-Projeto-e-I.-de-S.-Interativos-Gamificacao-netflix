@@ -13,24 +13,42 @@ abstract class _Counter with Store {
   @observable
   int percentText = 0;
 
+  @computed
+  int get totPoints => points;
+
+  @computed
+  bool get isScene => (points == 4);
+
+  @computed
+  bool get isBast => (points >= 3);
+
   @action
   incrementPoints() {
-    print("multipliquei pontos");
-    print(points);
-    points++;
+    if (points > 4) {
+      points = 0;
+      return;
+    } else {
+      points++;
+    }
   }
 
   @action
   incrementPercent() {
-    print("multipliquei porcentagem");
-    print(percent);
-    percent = percent + 0.25;
+    if (percent > 1.0) {
+      percent = 0.0;
+      return;
+    } else {
+      percent = percent + 0.25;
+    }
   }
 
   @action
   incrementpercentText() {
-    print("multipliquei porcentagem texto");
-    print(percentText);
-    percentText = percentText + 25;
+    if (percentText > 100) {
+      percentText = 0;
+      return;
+    } else {
+      percentText = percentText + 25;
+    }
   }
 }

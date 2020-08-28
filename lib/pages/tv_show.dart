@@ -23,10 +23,6 @@ class TvShow extends StatefulWidget {
 
 class TvShowState extends ModularState<TvShow, Counter> {
   var currentSeason = 1;
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +36,7 @@ class TvShowState extends ModularState<TvShow, Counter> {
         slivers: <Widget>[
           SliverAppBar(
             primary: true,
-            expandedHeight: 430.0,
+            expandedHeight: 530.0,
             backgroundColor: Colors.black,
             flexibleSpace: FlexibleSpaceBar(
               collapseMode: CollapseMode.pin,
@@ -348,24 +344,74 @@ class TvShowState extends ModularState<TvShow, Counter> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(top: 8.0),
-                              child: Container(
-                                  child: Observer(
-                                builder: (_) => Text(
-                                  'Pontos: ${this.controller.points}',
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 3,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    color: Color.fromRGBO(255, 255, 255, 0.8),
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 15.0,
+                              padding: EdgeInsets.only(top: 1.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Container(
+                                      child: Observer(
+                                    builder: (_) => Text(
+                                      'Pontos: ${this.controller.totPoints}',
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 3,
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        color:
+                                            Color.fromRGBO(255, 255, 255, 0.8),
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 15.0,
+                                      ),
+                                    ),
+                                  )),
+                                  Observer(
+                                    builder: (_) => RaisedButton(
+                                      onPressed: this.controller.isScene
+                                          ? () {}
+                                          : null,
+                                      elevation: 8.0,
+                                      child: Text(
+                                        'Cena deletada (4p)',
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 3,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          color: Color.fromRGBO(
+                                              255, 255, 255, 0.6),
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 12.0,
+                                        ),
+                                      ),
+                                      color: Colors.green,
+                                      disabledColor: Colors.transparent,
+                                    ),
                                   ),
-                                ),
-                              )),
+                                  Observer(
+                                    builder: (_) => RaisedButton(
+                                      onPressed:
+                                          this.controller.isBast ? () {} : null,
+                                      elevation: 8.0,
+                                      child: Text(
+                                        'Bastidores (3p)',
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 3,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          color: Color.fromRGBO(
+                                              255, 255, 255, 0.6),
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 12.0,
+                                        ),
+                                      ),
+                                      color: Colors.green,
+                                      disabledColor: Colors.transparent,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(top: 8.0),
+                              padding: EdgeInsets.only(top: 4.0),
                               child: Container(
                                 child: Text(
                                   'EPISODIOS',
@@ -398,7 +444,7 @@ class TvShowState extends ModularState<TvShow, Counter> {
                                       fontSize: 15.0,
                                     ),
                                   ),
-                                  (widget.item.seasons.length > 1
+                                  (widget.item.seasons.length > 0
                                       ? Padding(
                                           padding: EdgeInsets.only(left: 8.0),
                                           child: Icon(
@@ -423,14 +469,13 @@ class TvShowState extends ModularState<TvShow, Counter> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) => Container(
-                margin: EdgeInsets.only(bottom: 16.0),
                 child: Column(
                   children: <Widget>[
                     Row(
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.only(right: 8.0),
-                          width: 150.0,
+                          width: 100.0,
                           height: 90.0,
                           decoration: BoxDecoration(
                             image: DecorationImage(

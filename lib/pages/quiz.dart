@@ -13,11 +13,6 @@ class QuizState extends ModularState<Quiz, Counter> {
   var currentSeason = 1;
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     var items = ["waffles", "hamburguer", "pizza", "sorvete"];
     SingingCharacter _character = SingingCharacter.waffles;

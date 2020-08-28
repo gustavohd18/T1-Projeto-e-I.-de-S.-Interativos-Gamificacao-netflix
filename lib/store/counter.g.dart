@@ -9,6 +9,25 @@ part of 'counter.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$Counter on _Counter, Store {
+  Computed<int> _$totPointsComputed;
+
+  @override
+  int get totPoints => (_$totPointsComputed ??=
+          Computed<int>(() => super.totPoints, name: '_Counter.totPoints'))
+      .value;
+  Computed<bool> _$isSceneComputed;
+
+  @override
+  bool get isScene => (_$isSceneComputed ??=
+          Computed<bool>(() => super.isScene, name: '_Counter.isScene'))
+      .value;
+  Computed<bool> _$isBastComputed;
+
+  @override
+  bool get isBast => (_$isBastComputed ??=
+          Computed<bool>(() => super.isBast, name: '_Counter.isBast'))
+      .value;
+
   final _$pointsAtom = Atom(name: '_Counter.points');
 
   @override
@@ -94,7 +113,10 @@ mixin _$Counter on _Counter, Store {
     return '''
 points: ${points},
 percent: ${percent},
-percentText: ${percentText}
+percentText: ${percentText},
+totPoints: ${totPoints},
+isScene: ${isScene},
+isBast: ${isBast}
     ''';
   }
 }
