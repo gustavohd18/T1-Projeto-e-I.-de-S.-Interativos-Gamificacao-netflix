@@ -1,6 +1,9 @@
+import 'package:IHC_netflix/main.dart';
 import 'package:IHC_netflix/models/episode.dart';
 import 'package:IHC_netflix/models/series.dart';
+import 'package:IHC_netflix/pages/list_episodio.dart';
 import 'package:IHC_netflix/store/counter.dart';
+import 'package:IHC_netflix/widgets/content_list.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -293,7 +296,13 @@ class TvShowState extends State<TvShow> {
                                   ),
                                   FlatButton(
                                     textColor: Colors.white70,
-                                    onPressed: () => print('Quiz'),
+                                    onPressed: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => ListEpisodio(
+                                                item: widget.item,
+                                              )),
+                                    ),
                                     child: Container(
                                       height: 50.0,
                                       child: Column(
@@ -376,7 +385,7 @@ class TvShowState extends State<TvShow> {
                             FlatButton(
                               padding: EdgeInsets.all(0.0),
                               onPressed: widget.item.seasons.length > 1
-                                  ? () => print('cambiando temporada')
+                                  ? () => print('temporada')
                                   : null,
                               child: Row(
                                 children: <Widget>[
