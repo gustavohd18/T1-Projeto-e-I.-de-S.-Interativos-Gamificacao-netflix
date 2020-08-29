@@ -32,6 +32,7 @@ class QuizState extends ModularState<Quiz, Counter> {
           ListTile(
             title: const Text('Hamburguer'),
             leading: Radio(
+              activeColor: Colors.white,
               value: SingingCharacter.hamburguer,
               groupValue: _character,
               onChanged: (SingingCharacter value) {
@@ -44,6 +45,7 @@ class QuizState extends ModularState<Quiz, Counter> {
           ListTile(
             title: const Text('Waffles'),
             leading: Radio(
+              activeColor: Colors.white,
               value: SingingCharacter.waffles,
               groupValue: _character,
               onChanged: (SingingCharacter value) {
@@ -56,6 +58,7 @@ class QuizState extends ModularState<Quiz, Counter> {
           ListTile(
             title: const Text('Pizza'),
             leading: Radio(
+              activeColor: Colors.white,
               value: SingingCharacter.pizza,
               groupValue: _character,
               onChanged: (SingingCharacter value) {
@@ -68,6 +71,7 @@ class QuizState extends ModularState<Quiz, Counter> {
           ListTile(
             title: const Text('Sorvete'),
             leading: Radio(
+              activeColor: Colors.white,
               value: SingingCharacter.sorvete,
               groupValue: _character,
               onChanged: (SingingCharacter value) {
