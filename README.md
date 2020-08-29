@@ -1,16 +1,22 @@
-# IHC_netflix
+# IHC Netflix
 
-A new Flutter project.
+IHC netflix its a project was developed in the context of a university discipline called Projeto e I. de S. Interativos. Which aims to gamification any app or website that already exists and has no gamification. I chose to create a small quiz system with points related to Netflix series and movies. This is a prototype and all data is a mock.
+
+# Screenshot
+<img src="/screenshot/image1.png" width = "300" height="300px"/> <img src="/screenshot/image2.png" width = "300" height="300px"/> 
+<img src="/screenshot/image3.png" width = "300" height="300px"/> <img src="/screenshot/image4.png" width = "300" height="300px"/> 
+<img src="/screenshot/image5.png"  width = "300" height="300px"/> <img src="/screenshot/image6.png"  width = "300" height="300px"/>  
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To use project which goal is just developing things you'll need get youtube API key and put inside dialog_content file in function called playYoutubeVideo. 
+Also, you'll need install Flutter to run project documentation below.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+## FAQ:
+If you have any questions send me message or you like join feel free to made Pull requests or clone !
+
+
