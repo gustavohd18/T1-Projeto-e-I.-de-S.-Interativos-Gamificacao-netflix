@@ -11,11 +11,10 @@ class Quiz extends StatefulWidget {
 
 class QuizState extends ModularState<Quiz, Counter> {
   var currentSeason = 1;
+  SingingCharacter _character = SingingCharacter.waffles;
 
   @override
   Widget build(BuildContext context) {
-    var items = ["waffles", "hamburguer", "pizza", "sorvete"];
-    SingingCharacter _character = SingingCharacter.waffles;
     return Scaffold(
       appBar: AppBar(
         title: Text('Episodios'),
@@ -23,12 +22,13 @@ class QuizState extends ModularState<Quiz, Counter> {
       body: Column(
         children: <Widget>[
           Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                "Qual é a comida favorita da Onze?",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18),
-              )),
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              "Qual é a comida favorita da Onze?",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
           ListTile(
             title: const Text('Hamburguer'),
             leading: Radio(
@@ -82,21 +82,45 @@ class QuizState extends ModularState<Quiz, Counter> {
             onPressed: () => {
               if (_character.index == 0)
                 {
+                  showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (context) {
+                        Future.delayed(Duration(milliseconds: 500), () {
+                          Navigator.of(context).pop(true);
+                        });
+                        return AlertDialog(
+                          title: Icon(Icons.check),
+                          content: Text(
+                            "Resposta correta",
+                            textAlign: TextAlign.center,
+                          ),
+                        );
+                      }),
                   print("waffle"),
                   this.controller.incrementPercent(),
                   this.controller.incrementPoints(),
-                  this.controller.incrementpercentText()
-                }
-              else
-                {print("Erro")}
+                  this.controller.incrementpercentText(),
+                },
+              if (_character.index != 0)
+                {
+                  showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (context) {
+                        Future.delayed(Duration(milliseconds: 500), () {
+                          Navigator.of(context).pop(true);
+                        });
+                        return AlertDialog(
+                          title: Icon(Icons.error),
+                          content: Text(
+                            "Resposta Errada",
+                            textAlign: TextAlign.center,
+                          ),
+                        );
+                      })
+                },
             },
-            // Navigator.push(
-            //context,
-            //MaterialPageRoute(
-            //     builder: (context) => ListEpisodio(
-            //           item: widget.item,
-            //         )),
-            //),
             child: Container(
               height: 50.0,
               child: Column(
